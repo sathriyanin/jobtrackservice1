@@ -1,0 +1,36 @@
+.create-container {
+    margin: 1rem;
+    .form-create {
+        display: flex;
+        flex-direction: column;
+    }
+    .submit-btn-div {
+        justify-content: end;
+        display: flex;
+        button {
+            margin-left: .5rem;
+        }
+    }
+    .detail-header {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 16px;
+        h3 {
+            margin: 0;
+        }
+    }
+
+    .step-div {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        .step-position {
+            background-color: #673ab7;
+            color: #fff;
+            width: 20px;
+            text-align: center;
+            border-radius: 50%;
+        }        
+    }
+
+}

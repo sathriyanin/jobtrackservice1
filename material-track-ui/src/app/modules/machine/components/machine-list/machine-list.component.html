@@ -1,0 +1,21 @@
+<div class="employee-list-container">
+    <div class="list-header">
+        <button mat-icon-button [routerLink]="['detail']">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <mat-nav-list>
+        <ng-container  *ngFor="let machine of machineList">
+            <mat-list-item activated=false disableRipple=true>
+                <span matLine>{{machine.name}} {{machine.model}}</span>
+                <button mat-icon-button (click)="deleteItem(machine)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button [routerLink]="['detail']" [state]="machine" >
+                    <mat-icon>arrow_forward_ios</mat-icon>
+                </button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </ng-container>
+    </mat-nav-list>
+</div>

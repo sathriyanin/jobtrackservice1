@@ -1,0 +1,21 @@
+version: 0.2
+env:
+  variables:
+      S3_BUCKET: "material-track-ui"
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - echo Npm Install Angular Dependency
+      - cd material-track-ui
+      - npm install -g @angular/cli@14
+      - npm install -f
+  build:
+    commands: 
+      - echo Build starting
+      - npm run build
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'material-track-ui/dist/material-track-ui*'

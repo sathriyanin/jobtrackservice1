@@ -1,0 +1,86 @@
+.card-list {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+}
+.step-container {
+    position: relative;
+    &:before {
+        position: absolute;
+        content: "";
+        width: 3px;
+        background: #ccc;
+        top: 12%;
+        height: 63%;
+        left: 1.9rem;
+        z-index: -1;
+
+    }
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .step {
+        span.step-position {
+            width: 2rem;
+            height: 2rem;
+            background: #ccc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .step-content {
+            width: 100%;
+            .step-status {
+                margin: 0 .5rem;
+            }
+            .step-action-content {
+                .step-form-field {
+                    margin-left: 1rem;
+                }
+            }
+        }
+        display: flex;
+        gap: 1rem;
+    }
+
+}
+
+.status-card {
+    background: #ccc;
+    padding: 0px 0.75rem;
+    border-bottom-left-radius: 25%;
+    border-top-left-radius: 25%;
+    border-top-left-radius: 50px 50px;
+    border-bottom-left-radius: 50px 50px;
+    border-top-right-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px;
+}
+
+.status-card-open {
+    background: green !important;
+    color: #fff;
+} 
+.status-card-inprogress {
+    background: rgb(209, 199, 7)  !important;
+    color: initial;
+} 
+
+.disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+.form-div {
+    display: flex;
+    flex-wrap: wrap;
+    .form-item {
+        display: grid;
+        grid-template-columns: 2fr 0fr 10fr;
+        grid-gap: 1rem;
+        flex-basis: 50%;
+        label {
+            font-weight: bold ;
+        }
+    }
+}

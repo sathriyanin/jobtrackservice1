@@ -1,0 +1,92 @@
+<div class="card-list" *ngIf="view === 'CARD'">
+    <mat-card *ngFor="let assignment of emplyeeWorkOrderList">
+        <mat-card-header>
+            <mat-card-title>{{assignment.name}}</mat-card-title>
+            <mat-card-actions align="end">
+                <button mat-icon-button (click)="launchAssignment(assignment)">
+                    <mat-icon>open_in_new</mat-icon>
+                </button>
+              </mat-card-actions>
+        </mat-card-header>
+        <mat-card-content>
+
+        </mat-card-content>
+    </mat-card>    
+</div>
+
+<div class="workflow-container" #workFlowContainer *ngIf="view === 'WORK_FLOW'">
+    <mat-card>
+        <mat-card-content> 
+            <div>
+                <h2>Work order details: </h2>
+                <div class="form-div">
+                    <div class="form-item">
+                        <label>Name</label>
+                        <label>:</label>
+                        <span>{{currentWorkFlow.name}}</span>
+                    </div>
+                    <div class="form-item">
+                        <label>Status</label>
+                        <label>:</label>
+                        <span>{{currentWorkFlow.status | titlecase}}</span>
+                    </div>
+                    <div class="form-item">
+                        <label>Client Name</label>
+                        <label>:</label>
+                        <span>{{currentWorkFlow.clientName}}</span>
+                    </div>
+                    <div class="form-item">
+                        <label>Assigned By</label>
+                        <label>:</label>
+                        <span>{{currentWorkFlow.assignedByUserName}}</span>
+                    </div>
+                    <div class="form-item">
+                        <label>Start date</label>
+                        <label>:</label>
+                        <span>{{(currentWorkFlow.startDate) ? currentWorkFlow.startDate: 'NA'}}</span>
+                    </div>
+                    <div class="form-item">
+                        <label>End date</label>
+                        <label>:</label>
+                        <span>{{(currentWorkFlow.endDate) ? currentWorkFlow.endDate : 'NA'}}</span>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <div class="step-container">
+        <div class="step" *ngFor="let step of currentWorkFlow.steps">
+            <span class="step-position" [ngClass]="{
+                'status-card-open': currentWorkFlow.currentStepId === step.id
+            }">{{step.position}}</span>
+            <div class="step-content">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>{{step.name}} <span class="step-status status-card">{{getStatusValue(step.status) | titlecase}}</span></mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="step-action-content" [ngClass]="{
+                        'disabled': currentWorkFlow.currentStepId !== step.id || step.status === 'COMPLETE'
+                    }">
+                        <mat-form-field class="step-form-field">
+                            <mat-label>Remarks</mat-label>
+                            <textarea matInput [(ngModel)]="step.remarks" placeholder="Please enter remarks"></textarea>
+                        </mat-form-field>
+                        <mat-form-field class="step-form-field">
+                            <mat-label>Status</mat-label>
+                            <mat-select [(ngModel)]="step.status" ngDefaultControl>
+                                <mat-option 
+                                    *ngFor="let statusItem of stepStatusList | keyvalue" [value]="statusItem.key">{{statusItem.value | titlecase}}</mat-option>
+                            </mat-select>                        
+                        </mat-form-field>
+                    </div>
+                    <div class="save-btn-div" [ngClass]="{
+                        'disabled': currentWorkFlow.currentStepId !== step.id
+                    }">
+                        <button mat-raised-button color="primary" (click)="saveStep(step)">Save</button>
+                    </div>
+            </mat-expansion-panel>
+            </div>
+        </div>
+    </div>
+    
+</div>

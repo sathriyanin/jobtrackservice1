@@ -1,0 +1,24 @@
+.table {
+    width: 95%;
+    margin: 1rem auto;
+}
+.status-card {
+    background: #ccc;
+    padding: 0px 0.75rem;
+    border-bottom-left-radius: 25%;
+    border-top-left-radius: 25%;
+    border-top-left-radius: 50px 50px;
+    border-bottom-left-radius: 50px 50px;
+    border-top-right-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px;
+}
+
+.status-card-open {
+    background: green !important;
+    color: #fff;
+} 
+.status-card-inprogress {
+    background: rgb(209, 199, 7)  !important;
+    color: initial;
+} 
+

@@ -1,0 +1,12 @@
+version: 0.2
+install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - echo Npm Install
+      - cd tracking-service
+      - npm install
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'tracking-service*'

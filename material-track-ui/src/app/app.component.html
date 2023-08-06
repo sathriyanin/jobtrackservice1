@@ -1,0 +1,19 @@
+<div>
+  <mat-toolbar color="primary">
+    <span>Matrial Track</span>
+    <span class="header-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User Menu icon" *ngIf="authService.loggedIn || clientAuthService.loggedIn">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="doLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+    
+  </mat-toolbar>
+  <section class="content-section">
+    <router-outlet></router-outlet>  
+  </section>
+</div>

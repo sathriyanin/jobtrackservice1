@@ -1,0 +1,10 @@
+.login-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    .client-login-div {
+        text-align: right;
+        margin-top: 1rem;
+    }
+}

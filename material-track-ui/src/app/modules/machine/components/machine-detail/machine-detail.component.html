@@ -1,0 +1,30 @@
+<div class="create-container">
+    <div class="detail-header">
+        <button mat-icon-button (click)="goToMachine()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h3>{{(editMode) ? 'Update' : 'Create'}} Machine</h3>
+    </div>
+    <form class="form-create" [formGroup]="machineForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Model</mat-label>
+            <input matInput formControlName="model">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Organization</mat-label>
+            <mat-select formControlName="orgId">
+                <mat-option 
+                    [selected]=""
+                    *ngFor="let org of orgService.orgList" [value]="org.id">{{org.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="submit-btn-div">
+            <button mat-raised-button color="primary">Submit</button>
+        </div>
+    </form>
+</div>

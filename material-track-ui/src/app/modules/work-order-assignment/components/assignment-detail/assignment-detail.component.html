@@ -1,0 +1,46 @@
+<div class="create-container">
+    <div class="detail-header">
+        <button mat-icon-button (click)="goToAssignment()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h3>{{(editMode) ? 'Update' : 'Create'}} Work order assignment</h3>
+    </div>
+    <form class="form-create" [formGroup]="workOderAssignmentForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+            <mat-label>Work order</mat-label>
+            <mat-select formControlName="workOrderId" (selectionChange)="onWorkOrederIdChange($event)">
+                <mat-option 
+                    *ngFor="let workOrder of workOrderService.activeWorkOrders" [value]="workOrder.id">{{workOrder.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Customer</mat-label>
+            <mat-select formControlName="clientId">
+                <mat-option 
+                    *ngFor="let customer of customerService.customerList" [value]="customer.id">{{customer.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <ng-container  formArrayName="steps">
+            <mat-card *ngFor="let step of steps?.controls;let index = index">
+                <div [formGroupName]="index" class="step-div ">
+                    <div class="step-position">{{step.value.position}}</div>
+                    <label>{{step.value.name}}</label>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>User</mat-label>
+                            <mat-select formControlName="assignedUserId">
+                                <mat-option 
+                                    *ngFor="let employee of employeeService.userRoleEmployeeList" [value]="employee.id">{{employee.firstname}} {{employee.lastname}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>   
+                    </div>
+                </div>
+            </mat-card>    
+        </ng-container>
+
+        <div class="submit-btn-div">
+            <button mat-raised-button color="primary">Submit</button>
+        </div>
+    </form>
+</div>

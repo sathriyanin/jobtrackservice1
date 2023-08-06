@@ -1,0 +1,33 @@
+.create-container {
+    margin: 1rem;
+    .form-create {
+        display: flex;
+        flex-direction: column;
+    }
+    .submit-btn-div {
+        justify-content: end;
+        display: flex;
+        button {
+            margin-left: .5rem;
+        }
+    }
+    .detail-header {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 16px;
+        h3 {
+            margin: 0;
+        }
+    }
+    .step-header{
+        text-align: right;
+        padding: 0.5rem 1rem;
+    }
+
+    .stepCard {
+        margin: 1rem 0.5rem;
+        mat-form-field {
+            margin: 0 .5rem;
+        }
+    }
+}

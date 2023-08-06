@@ -1,0 +1,38 @@
+<div class="create-container">
+    <div class="detail-header">
+        <button mat-icon-button (click)="goToWorkOrder()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h3>{{(editMode) ? 'Update' : 'Create'}} Machine</h3>
+    </div>
+    <div class="form-create">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="workOrder.name" ngDefaultControl>
+        </mat-form-field>
+        <div>
+            <div class="step-header">
+                <button mat-icon-button (click)="addWorkOrderStep()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            <mat-card *ngFor="let step of workOrder.steps" class="stepCard">
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput [(ngModel)]="step.name" ngDefaultControl>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Machine</mat-label>
+                    <mat-select [(ngModel)]="step.machineId">
+                        <mat-option 
+                            *ngFor="let machine of machineList" [value]="machine.id">{{machine.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-card>
+        </div>
+        <div class="submit-btn-div">
+            <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+            <button mat-raised-button color="primary" (click)="activateAndSubmit()">Activate</button>
+        </div>
+    </div>
+</div>

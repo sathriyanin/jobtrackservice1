@@ -1,0 +1,22 @@
+<div class="employee-list-container">
+    <div class="list-header">
+        <button mat-icon-button [routerLink]="['detail']">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <mat-nav-list>
+        <ng-container *ngFor="let employee of employeeList">
+            <mat-list-item activated=false disableRipple=true>
+                <span matLine>{{employee.firstname}} {{employee.lastname}}</span>
+                <button mat-icon-button (click)="deleteItem(employee)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button [routerLink]="['detail']"
+                    [state]="employee">
+                    <mat-icon>arrow_forward_ios</mat-icon>
+                </button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </ng-container>
+    </mat-nav-list>
+</div>
